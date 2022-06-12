@@ -1,0 +1,44 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="index_javascript.js"></script>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form >
+            <fieldset>
+                <legend>Sent json</legend>
+                <input type="text" name="name">
+                <input type="text" name="age">
+                <input type="button" value="send" class="submit">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html> -->
+
+<form id="formElem">
+    <input type="text" name="name" value="John">
+    <input type="text" name="surname" value="Smith">
+    <input type="submit">
+  </form>
+  
+  <script>
+    formElem.onsubmit = async (e) => {
+      e.preventDefault();
+  
+      let response = await fetch('/show_page', {
+        method: 'POST',
+        body: new FormData(formElem)
+      });
+  
+      let result = await response.json();
+  
+      alert(result.message);
+    };
+  </script>
